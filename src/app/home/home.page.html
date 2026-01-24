@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,54 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Inicio</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <swiper-container
+  slides-per-view="1"
+  space-between="10"
+  pagination="true"
+  loop="true"
+>
+
+<swiper-slide>
+    <div class="slide">
+      <h2>Musica Clasica</h2>
+      <div class="image-box">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.TN1mkKRFHFjmvedS-gRMewHaEK?w=1920&h=1080&rs=1&pid=ImgDetMain&o=7&rm=3" />  
+      </div>
+      <p>Sonidos que no pasan de moda. La música clásica mezcla elegancia, emoción y concentración en cada nota. Ideal para relajarte, estudiar o desconectarte del ruido diario. Piano suave, cuerdas profundas y composiciones que fluyen sin prisa, creando el ambiente perfecto para cualquier momento</p>
+    </div>
+  </swiper-slide>
+
+  <swiper-slide>
+    <div class="slide">
+      <h2>Salsa</h2>
+      <img src="https://www.shutterstock.com/image-photo/conga-drum-tumbadora-isolated-on-260nw-2506142405.jpg" alt=/>
+      <p>Ritmo, sabor y corazón latino. La salsa es pura energía, perfecta para bailar, cantar y sentir la música en cada paso. Trompetas, piano y percusión se unen para crear canciones llenas de pasión y movimiento. Dale play y deja que el ritmo te lleve</p>
+    </div>
+  </swiper-slide>
+
+  <swiper-slide>
+    <div class="slide">
+      <h2>Tropical</h2>
+      <img src="https://www.shutterstock.com/image-illustration/watercolor-drum-kit-trombone-guitar-260nw-2577365693.jpg"/>
+      <p>Sonidos frescos que saben a verano. La música tropical combina alegría, ritmo y buena vibra para acompañar cualquier momento. Ideal para fiestas, reuniones o simplemente para subir el ánimo. Música que invita a sonreír y disfrutar sin complicaciones</p>
+    </div>
+  </swiper-slide>
+
+  <swiper-slide>
+    <div class="slide">
+      <h2>Merengue</h2>
+      <img src="https://st4.depositphotos.com/1811396/22499/v/450/depositphotos_224998990-stock-illustration-musical-instruments-isolated-on-white.jpg" />
+      <p>Velocidad, alegría y fiesta total. El merengue es energía pura que no deja quedarse quieto. Acordeón, tambora y ritmo contagioso que prende cualquier ambiente. Perfecto para bailar, celebrar y vivir el momento al máximo</p>
+    </div>
+  </swiper-slide>
+</swiper-container>
+
+<ion-button expand="block" (click)="toggleTheme()">
+  Cambiar tema
+</ion-button>
+  
 </ion-content>
