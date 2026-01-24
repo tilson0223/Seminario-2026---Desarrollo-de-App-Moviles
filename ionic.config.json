@@ -1,0 +1,7 @@
+{
+  "name": "spotifi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
