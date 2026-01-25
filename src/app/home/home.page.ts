@@ -43,4 +43,7 @@ export class HomePage implements OnInit {
     }
     
   }
+
+  //desde el home crear una funcion para ir a ver la intro, la cual se va a conectar con un boton que debemos agregar en el html el cual al hacer clic me lleve a ver la intro
+
 }

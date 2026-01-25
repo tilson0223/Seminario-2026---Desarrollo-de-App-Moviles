@@ -22,4 +22,5 @@ export class IntroPage implements OnInit {
     console.log("Volver")
     this.router.navigateByUrl("/home");
   }
+  //al vovler al home guardar en el storage que ya vi la pagina de intro
 }
