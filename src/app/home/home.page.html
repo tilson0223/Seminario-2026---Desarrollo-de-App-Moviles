@@ -58,5 +58,17 @@
 <ion-button expand="block" (click)="toggleTheme()">
   Cambiar tema
 </ion-button>
-  
+
+<div>
+  <h3>Demo Ionic Storage</h3>
+  <div [Style.background-color]="colorActual">
+    <p>Team Actual: {{ colorActual === colorOscuro ? 'Oscuro' : 'Claro'}} </p>
+  </div>
+</div>
+
+<div>
+  <ion-button (click)="cambiarColor()">Cambiar Tema y Guardar </ion-button>
+
+</div>
+
 </ion-content>
