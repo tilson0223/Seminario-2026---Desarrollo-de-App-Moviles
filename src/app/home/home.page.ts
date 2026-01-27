@@ -28,6 +28,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit () {
     await this.loadStorageData();
+    this.simularCargaDatos();
   }
 
   async cambiarColor(){
@@ -43,6 +44,22 @@ export class HomePage implements OnInit {
     }
     
   }
+
+  async simularCargaDatos () {
+    const data = await this.obtenerDatosSimulados();
+    console.log('Datos simulados: ', data)
+  }
+
+  obtenerDatosSimulados(){
+    return new Promise(resolve =>{
+      setTimeout(() =>{
+        resolve(['Rock', 'Pop', 'Jazz'])
+      }, 6500)
+    })
+
+  }
+
+
 
   //desde el home crear una funcion para ir a ver la intro, la cual se va a conectar con un boton que debemos agregar en el html el cual al hacer clic me lleve a ver la intro
 

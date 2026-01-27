@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-intro',
@@ -13,7 +14,17 @@ import { Router } from '@angular/router';
 })
 export class IntroPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor (
+  private router: Router,
+  private storage: Storage ){}
+  
+  
+  async finalizarIntro() {
+  await this.storage.create();
+  await this.storage.set('introVisto', true);
+  this.router.navigateByUrl('/home');
+}
+  
 
   ngOnInit() {
   }
