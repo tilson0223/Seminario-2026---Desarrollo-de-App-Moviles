@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
     return new Promise(resolve =>{
       setTimeout(() =>{
         resolve(['Rock', 'Pop', 'Jazz'])
-      }, 6500)
+      })
     })
 
   }

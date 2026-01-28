@@ -21,13 +21,13 @@ export class IntroGuard implements CanActivate {
 
     const introVisto = await this.storage.get('introVisto');
 
-    if (introVisto) {
+    if (introVisto === true) {
       return true;
-    } else {
-      this.router.navigateByUrl('/intro');
+    } 
+      this.router.navigateByUrl('/intro', { replaceUrl: true });
       return false;
     }
   }
   
-}
+
 

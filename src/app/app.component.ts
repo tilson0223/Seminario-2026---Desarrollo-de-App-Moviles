@@ -13,3 +13,4 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 export class AppComponent {
   constructor() {}
 }
+  

@@ -13,16 +13,20 @@ import { Storage } from '@ionic/storage-angular';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class IntroPage implements OnInit {
+    isLastSlide = false;
 
   constructor (
   private router: Router,
   private storage: Storage ){}
   
+  async onSlideChange(event: any) {
+    const swiper = event.target.swiper;
+    this.isLastSlide = swiper.isEnd;
+  }
   
   async finalizarIntro() {
-  await this.storage.create();
   await this.storage.set('introVisto', true);
-  this.router.navigateByUrl('/home');
+  this.router.navigateByUrl('/home',);
 }
   
 
@@ -31,7 +35,7 @@ export class IntroPage implements OnInit {
 
   goBack(){
     console.log("Volver")
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl('/home',);
   }
   //al vovler al home guardar en el storage que ya vi la pagina de intro
 }
