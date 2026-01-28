@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';//
+import { AuthService } from '../services/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,25 @@ export class IntroGuard implements CanActivate {
       this.router.navigateByUrl('/intro', { replaceUrl: true });
       return false;
     }
-  }
   
+    
+  }
+  export class AuthGuard implements CanActivate {
+    constructor(
+    private storage: Storage,
+    private router: Router
+  ) {}
 
+  async canActivate(): Promise<boolean> {
+    await this.storage.create();
 
+    const isLogged = await this.storage.get('isLogged');
+
+    if (isLogged === true) {
+      return true;
+    }
+
+    this.router.navigateByUrl('/login', { replaceUrl: true });
+    return false;
+  }
+}
