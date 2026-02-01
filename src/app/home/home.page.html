@@ -15,21 +15,18 @@
   </ion-header>
 
   <swiper-container
-  slides-per-view="1"
+  slides-per-view="4"
   space-between="10"
   pagination="true"
   loop="true"
 >
 
-<swiper-slide *ngFor="let genre of genres">
+<swiper-slide *ngFor="let album of albums">
     <div class="slide-content">
-      <h2>{{ genre.title }}</h2>
-      <div class="image-box">
-      <img [src]="genre.image" [alt]="genre.title">
-      </div>
-      <p>{{ genre.description }}</p>
+      <img [src]="album.image" alt="">
+      <h4>{{ album.name }}</h4>
     </div>
-  </swiper-slide>
+</swiper-slide> 
 
 </swiper-container>
 
@@ -40,13 +37,6 @@
 <ion-button expand="block" (click)="toggleTheme()">
   Cambiar tema
 </ion-button>
-
-<div>
-  <h3>Demo Ionic Storage</h3>
-  <div [style.background-color]="colorActual">
-    <p>Team Actual: {{ colorActual === colorOscuro ? 'Oscuro' : 'Claro'}} </p>
-  </div>
-</div>
 
 <div>
   <ion-button (click)="cambiarColor()">Cambiar Tema y Guardar </ion-button>

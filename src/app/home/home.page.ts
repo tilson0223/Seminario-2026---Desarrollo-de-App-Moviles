@@ -5,6 +5,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StorageService } from '../services/storage';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MusicService } from '../services/music';
+import { albums } from 'ionicons/icons';
 
 
 @Component({
@@ -40,6 +42,9 @@ export class HomePage implements OnInit {
   }
   ]
 
+  tracks: any;
+  albums: any;
+
   colorClaro = 'var(--color-claro)';
   colorOscuro = 'var(--color-oscuro)';
   colorActual = 'this.colorOscuro';
@@ -51,12 +56,29 @@ export class HomePage implements OnInit {
 
     document.body.classList.toggle('dark-theme');
   }
-  constructor(private storageServce: StorageService, private router: Router
+  constructor(private storageServce: StorageService, private router: Router, private musicService: MusicService
   ) {}
 
   async ngOnInit () {
+    this.loadAlbums();
+    this.loadTracks();
     await this.loadStorageData();
-    this.simularCargaDatos();
+    this.simularCargaDatos();   
+  }
+
+  loadTracks(){
+    this.musicService.getTracks().then(tracks => {
+      this.tracks = tracks;
+      console.log(this.tracks, "las canciones")
+    })
+    }
+
+  loadAlbums(){
+    this.musicService.getAlbums().then(Albums => {
+      this.albums = albums;
+      console.log(this.albums, "los albums")
+    })
+  
   }
 
   async cambiarColor(){
