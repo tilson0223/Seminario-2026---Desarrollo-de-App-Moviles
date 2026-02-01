@@ -1,0 +1,53 @@
+:host {
+  --color-1: #4f46e5;
+  --color-2: #0ea5e9;
+  --color-3: #22c55e;
+  --color-4: #f97316;
+
+  --title-color: #ffffff;
+  --text-color: #e5e7eb;
+}
+
+/* Utilities */
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full {
+  height: 100%;
+}
+
+/* Slides */
+.slide {
+  @extend .center;
+  @extend .full;
+  @extend .text-center;
+  padding: 2rem;
+}
+
+.slide-1 { background: var(--color-1); }
+.slide-2 { background: var(--color-2); }
+.slide-3 { background: var(--color-3); }
+.slide-4 { background: var(--color-4); }
+
+.title {
+  font-size: 2.2rem;
+  color: var(--title-color);
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.start-btn {
+  margin-top: 2rem;
+}

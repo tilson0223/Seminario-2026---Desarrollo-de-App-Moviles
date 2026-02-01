@@ -1,0 +1,79 @@
+<ion-header>
+   <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="loginForm" (ngSubmit)="registrar(loginForm.value)">
+
+    <ion-item>
+      <ion-label position="floating"></ion-label>
+      <ion-input type="text" placeholder="Nombres" formControlName="nombres"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.nombres">
+        <div *ngIf="(loginForm.get('nombres')?.hasError(validation.type) && loginForm.get('nombres')?.dirty)">{{validation.message}}</div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"></ion-label>
+      <ion-input type="text" placeholder="Apellidos" formControlName="apellidos"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.apellidos">
+        <div *ngIf="(loginForm.get('apellidos')?.hasError(validation.type) && loginForm.get('apellidos')?.dirty)">{{validation.message}}</div>
+      </ng-container>
+    </div>
+    
+
+    <ion-item>
+      <ion-label position="floating"></ion-label>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div *ngIf="(loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty)">{{validation.message}}</div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"></ion-label>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.password">
+        <div 
+        *ngIf="(
+          loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty
+        )"
+        >{{validation.message}}</div>
+      </ng-container> 
+
+    <div>
+    <ion-button
+    expand="full"
+    shape="round"
+    color="warning"
+    [disabled]="!loginForm.valid"
+    type="submit"
+    >
+      Enviar registro
+    </ion-button>
+    </div>
+    <div> 
+      <ion-button
+      expand="block" (click)="irALogin()"
+      expand="full"
+    shape="round"
+    color="warning"
+    type="submit"
+    >
+      Ya estoy registrado
+    </ion-button></div>
+      </form>
+
+    {{errorMessage}}
+
+</ion-content>

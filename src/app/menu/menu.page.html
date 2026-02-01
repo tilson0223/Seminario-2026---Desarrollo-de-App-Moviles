@@ -1,0 +1,20 @@
+<ion-split-pane contentId="main-content">
+  <ion-menu contentId="main-content" slide="start" type="push">
+    <ion-header>
+      <ion-toolbar>
+        <ion-menu-toggle><ion-icon name="close-circle-outline"></ion-icon></ion-menu-toggle>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <!-- Agregar cerrar sesion que me direccionara a login y borrara del storage que ya estoy logueado-->
+        <ion-item (click)="goToIntro()">Ver la Intro</ion-item>
+         <ion-item color="danger" (click)="cerrarSesion()">Cerrar sesion</ion-item>
+      </ion-list>
+    
+      
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>

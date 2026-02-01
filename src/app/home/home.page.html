@@ -1,20 +1,56 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+ <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Inicio</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <swiper-container
+  slides-per-view="1"
+  space-between="10"
+  pagination="true"
+  loop="true"
+>
+
+<swiper-slide *ngFor="let genre of genres">
+    <div class="slide-content">
+      <h2>{{ genre.title }}</h2>
+      <div class="image-box">
+      <img [src]="genre.image" [alt]="genre.title">
+      </div>
+      <p>{{ genre.description }}</p>
+    </div>
+  </swiper-slide>
+
+</swiper-container>
+
+<div [style.background-color]="'var(--color-oscuro)'"></div>
+
+
+
+<ion-button expand="block" (click)="toggleTheme()">
+  Cambiar tema
+</ion-button>
+
+<div>
+  <h3>Demo Ionic Storage</h3>
+  <div [style.background-color]="colorActual">
+    <p>Team Actual: {{ colorActual === colorOscuro ? 'Oscuro' : 'Claro'}} </p>
   </div>
+</div>
+
+<div>
+  <ion-button (click)="cambiarColor()">Cambiar Tema y Guardar </ion-button>
+
+</div>
+
 </ion-content>
