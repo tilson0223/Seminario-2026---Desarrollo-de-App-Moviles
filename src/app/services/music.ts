@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import * as dataArtists from './artistas.json'
+
 
 @Injectable({
   providedIn: 'root',
@@ -21,4 +23,8 @@ export class MusicService {
         response => response.json()
       );
   }
+  getLocalArtists () {
+    return dataArtists;
+  }
+  
   }

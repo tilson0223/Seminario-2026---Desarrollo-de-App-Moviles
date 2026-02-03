@@ -1,0 +1,38 @@
+{"artists": [
+  {
+    "id": 1,
+    "name": "Bad Bunny",
+    "genre": "Reggaetón",
+    "country": "Puerto Rico",
+    "image": "https://i.scdn.co/image/ab6761610000e5eb8c3b9a5e6c7c1b6d9c2a7a8b"
+  },
+  {
+    "id": 2,
+    "name": "Karol G",
+    "genre": "Urbano",
+    "country": "Colombia",
+    "image": "https://i.scdn.co/image/ab6761610000e5ebf8f2a2c4d5e6a7b8c9d0e1f"
+  },
+  {
+    "id": 3,
+    "name": "Feid",
+    "genre": "Reggaetón",
+    "country": "Colombia",
+    "image": "https://i.scdn.co/image/ab6761610000e5eb1234567890abcdef12345678"
+  },
+  {
+    "id": 4,
+    "name": "Shakira",
+    "genre": "Pop Latino",
+    "country": "Colombia",
+    "image": "https://i.scdn.co/image/ab6761610000e5ebabcdef1234567890abcdef12"
+  },
+  {
+    "id": 5,
+    "name": "Morat",
+    "genre": "Pop Rock",
+    "country": "Colombia",
+    "image": "https://i.scdn.co/image/ab6761610000e5ebfedcba0987654321fedcba09"
+  }
+]
+}

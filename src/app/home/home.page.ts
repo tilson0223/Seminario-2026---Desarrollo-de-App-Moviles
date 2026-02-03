@@ -44,6 +44,7 @@ export class HomePage implements OnInit {
 
   tracks: any;
   albums: any;
+  localArtists: any;
 
   colorClaro = 'var(--color-claro)';
   colorOscuro = 'var(--color-oscuro)';
@@ -60,6 +61,7 @@ export class HomePage implements OnInit {
   ) {}
 
   async ngOnInit () {
+    this.getLocalArtists();
     this.loadAlbums();
     this.loadTracks();
     await this.loadStorageData();
@@ -71,10 +73,10 @@ export class HomePage implements OnInit {
       this.tracks = tracks;
       console.log(this.tracks, "las canciones")
     })
-    }
+  }
 
   loadAlbums(){
-    this.musicService.getAlbums().then(Albums => {
+    this.musicService.getAlbums().then(albums => {
       this.albums = albums;
       console.log(this.albums, "los albums")
     })
@@ -106,9 +108,17 @@ export class HomePage implements OnInit {
     })
    
   }
+  
+  getLocalArtists(){
+    this.localArtists = this.musicService.getLocalArtists();
+    console.log("artistas: ",this.localArtists.artists)
+  }
+
+  
+  }
 
 
 
   //desde el home crear una funcion para ir a ver la intro, la cual se va a conectar con un boton que debemos agregar en el html el cual al hacer clic me lleve a ver la intro
 
-}
+
