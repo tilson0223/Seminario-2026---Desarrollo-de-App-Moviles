@@ -22,9 +22,23 @@ export class MusicService {
     return fetch (`${this.urlServer}/albums`).then(
         response => response.json()
       );
+
   }
   getLocalArtists () {
     return dataArtists;
   }
+
+  getSongsByAlbum(albumId: string) {
+    return fetch (`${this.urlServer}/tracks/album/${albumId}`).then(
+    response => response.json()
+    );
+  }
   
+  getSongsByArtist(artistId: string) {
+    return fetch (`${this.urlServer}/tracks/artist/${artistId}`).then(
+    response => response.json()
+    );
+  }
+  //crear un srcicio paa btener los artistas desde el servidor api
+  //crear un servicio para obtener las canciones de un artista /tracks/artist/1
   }

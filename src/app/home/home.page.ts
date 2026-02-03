@@ -1,5 +1,5 @@
 import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StorageService } from '../services/storage';
@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MusicService } from '../services/music';
 import { albums } from 'ionicons/icons';
+import { SongsModalPage } from '../songs-modal/songs-modal.page';
+
 
 
 @Component({
@@ -45,6 +47,7 @@ export class HomePage implements OnInit {
   tracks: any;
   albums: any;
   localArtists: any;
+  artistSongs: any;
 
   colorClaro = 'var(--color-claro)';
   colorOscuro = 'var(--color-oscuro)';
@@ -57,7 +60,7 @@ export class HomePage implements OnInit {
 
     document.body.classList.toggle('dark-theme');
   }
-  constructor(private storageServce: StorageService, private router: Router, private musicService: MusicService
+  constructor(private storageServce: StorageService, private router: Router, private musicService: MusicService, private modalCtrl: ModalController
   ) {}
 
   async ngOnInit () {
@@ -114,11 +117,23 @@ export class HomePage implements OnInit {
     console.log("artistas: ",this.localArtists.artists)
   }
 
+  async showSongs(albumId: string) {
+    console.log("album id: ",albumId)
+    const songs = await this.musicService.getSongsByAlbum(albumId);
+    console.log("songs: ", songs)
+    const modal = await this.modalCtrl.create({
+      component: SongsModalPage,
+      componentProps: {
+        songs: songs        
+      }
+    });
+    modal.present();
+
   
   }
 
-
+  //crear funcion showSongsByArtists que abrira el modal ya creado y enviara en los porps las canciiones del artista
 
   //desde el home crear una funcion para ir a ver la intro, la cual se va a conectar con un boton que debemos agregar en el html el cual al hacer clic me lleve a ver la intro
 
-
+}

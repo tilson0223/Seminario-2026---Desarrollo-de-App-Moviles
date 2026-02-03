@@ -21,26 +21,14 @@
   loop="true"
 >
 
-<swiper-slide *ngFor="let album of albums">
+<swiper-slide *ngFor="let album of albums" (click)="showSongs(album.id)">
     <div class="slide-content">
       <img [src]="album.image"/>
       <p>{{ album.name }}</p>
     </div>
 </swiper-slide> 
-
 </swiper-container>
 
-<div [style.background-color]="'var(--color-oscuro)'"></div>
-
-
-
-<ion-button expand="block" (click)="toggleTheme()">
-  Cambiar tema
-</ion-button>
-
-<div>
-  <ion-button (click)="cambiarColor()">Cambiar Tema y Guardar </ion-button>
-
-</div>
+<!--mostrar un swiper o lista con los artistas del servidor y al darle clic muestre las cacnciones de ese artista -->
 
 </ion-content>
