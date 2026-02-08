@@ -54,7 +54,8 @@ export class HomePage implements OnInit {
     preview_url:'',
     playing: false,
   };
-  currentSong: any; 
+  currentSong: any = {}; 
+  newTime: any;
 
   colorClaro = 'var(--color-claro)';
   colorOscuro = 'var(--color-oscuro)';
@@ -87,14 +88,12 @@ async loadArtists() {
   loadTracks(){
     this.musicService.getTracks().then(tracks => {
       this.tracks = tracks;
-      console.log(this.tracks, "las canciones")
     })
   }
 
   loadAlbums(){
     this.musicService.getAlbums().then(albums => {
       this.albums = albums;
-      console.log(this.albums, "los albums")
     })
   
   }
@@ -103,7 +102,6 @@ async loadArtists() {
     //if ternario
     this.colorActual = this.colorActual === this.colorOscuro ? this.colorClaro : this.colorOscuro
     await this.storageServce.set('theme', this.colorActual)
-    console.log('Tema Guardado: ', this.colorActual)
   }
 
   async loadStorageData () {
@@ -114,7 +112,6 @@ async loadArtists() {
   }
   async simularCargaDatos () {
     const data = await this.obtenerDatosSimulados();
-    console.log('Datos simulados: ', data)
   }
   obtenerDatosSimulados(){
     return new Promise(resolve =>{
@@ -127,13 +124,10 @@ async loadArtists() {
   
   getLocalArtists(){
     this.localArtists = this.musicService.getLocalArtists();
-    console.log("artistas: ",this.localArtists.artists)
   }
 
   async showSongs(albumId: string) {
-    console.log("album id: ",albumId)
     const songs = await this.musicService.getSongsByAlbum(albumId);
-    console.log("songs: ", songs)
     const modal = await this.modalCtrl.create({
       component: SongsModalPage,
       componentProps: {
@@ -143,7 +137,7 @@ async loadArtists() {
     modal.onDidDismiss().then((result)=>{
       if (result.data){
         console.log("canción recibida ", result.data)
-      this.song =result.data
+        this.song = result.data
       }
     })
     modal.present();
@@ -163,11 +157,36 @@ async loadArtists() {
   modal.present();
 }
   
-  
+
+play(){
+  this.currentSong = new Audio(this.song.preview_url);
+  this.currentSong.play();
+  this.currentSong.addEventListener("timeupdate",()=>{
+    this.newTime = (this.currentSong.currentTime * (this.currentSong.duration / 10)) / 100;
+  })
+  this.song.playing = true;
+}
+pause(){
+  this.currentSong.pause();
+  this.song.playing = false;
+}
+
+formatTime(seconds: number) {
+  if (!seconds || isNaN(seconds)) return "0:00";
+  const minutes = Math.floor(seconds/60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  return  `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
+}
+
+getRemainingTime(){
+  if (!this.currentSong?.duration || !this.currentSong?.currentTime){
+    return 0;
   }
+  return this.currentSong.duration - this.currentSong.currentTime;
+}
 
   //crear funcion showSongsByArtists que abrira el modal ya creado y enviara en los porps las canciiones del artista
 
   //desde el home crear una funcion para ir a ver la intro, la cual se va a conectar con un boton que debemos agregar en el html el cual al hacer clic me lleve a ver la intro
 
-
+}
