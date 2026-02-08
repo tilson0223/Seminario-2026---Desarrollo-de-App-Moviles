@@ -21,10 +21,10 @@
   loop="true"
 >
 
-<swiper-slide *ngFor="let album of albums" (click)="showSongs(album.id)">
+<swiper-slide *ngFor="let artist of artists" (click)="openSongsModal(artist.id)">
     <div class="slide-content">
-      <img [src]="album.image"/>
-      <p>{{ album.name }}</p>
+      <img [src]="artist.image"/>
+      <p>{{ artist.name }}</p>
     </div>
 </swiper-slide> 
 </swiper-container>

@@ -48,6 +48,7 @@ export class HomePage implements OnInit {
   albums: any;
   localArtists: any;
   artistSongs: any;
+  artists: any []= [];
 
   colorClaro = 'var(--color-claro)';
   colorOscuro = 'var(--color-oscuro)';
@@ -64,6 +65,12 @@ export class HomePage implements OnInit {
   ) {}
 
   async ngOnInit () {
+    await this.loadArtists();
+}
+
+async loadArtists() {
+    this.artists = await this.musicService.getArtists();
+
     this.getLocalArtists();
     this.loadAlbums();
     this.loadTracks();
@@ -128,7 +135,22 @@ export class HomePage implements OnInit {
       }
     });
     modal.present();
+  }
 
+  async openSongsModal(artistId: string) {
+  console.log('artist id:', artistId);
+  const songs = await this.musicService.getSongsByArtist(artistId);
+  console.log('Songs del artista', artistId, songs);
+  const modal = await this.modalCtrl.create({
+    component: SongsModalPage,
+    componentProps: {
+      songs: songs
+    }
+  });
+
+  modal.present();
+}
+  
   
   }
 
@@ -136,4 +158,4 @@ export class HomePage implements OnInit {
 
   //desde el home crear una funcion para ir a ver la intro, la cual se va a conectar con un boton que debemos agregar en el html el cual al hacer clic me lleve a ver la intro
 
-}
+

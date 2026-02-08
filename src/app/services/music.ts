@@ -28,6 +28,11 @@ export class MusicService {
     return dataArtists;
   }
 
+  getArtists() {
+    return fetch(`${this.urlServer}/artists`)
+      .then(response => response.json());
+  }
+
   getSongsByAlbum(albumId: string) {
     return fetch (`${this.urlServer}/tracks/album/${albumId}`).then(
     response => response.json()
