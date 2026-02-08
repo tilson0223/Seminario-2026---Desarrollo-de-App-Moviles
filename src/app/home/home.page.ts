@@ -49,6 +49,12 @@ export class HomePage implements OnInit {
   localArtists: any;
   artistSongs: any;
   artists: any []= [];
+  song: any = {
+    name:'',
+    preview_url:'',
+    playing: false,
+  };
+  currentSong: any; 
 
   colorClaro = 'var(--color-claro)';
   colorOscuro = 'var(--color-oscuro)';
@@ -134,6 +140,12 @@ async loadArtists() {
         songs: songs        
       }
     });
+    modal.onDidDismiss().then((result)=>{
+      if (result.data){
+        console.log("canción recibida ", result.data)
+      this.song =result.data
+      }
+    })
     modal.present();
   }
 

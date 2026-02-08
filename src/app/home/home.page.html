@@ -21,14 +21,23 @@
   loop="true"
 >
 
-<swiper-slide *ngFor="let artist of artists" (click)="openSongsModal(artist.id)">
+<swiper-slide *ngFor="let album of albums" (click)="showSongs(album.id)">
     <div class="slide-content">
-      <img [src]="artist.image"/>
-      <p>{{ artist.name }}</p>
+      <img [src]="album.image"/>
+      <p>{{ album.name }}</p>
     </div>
 </swiper-slide> 
 </swiper-container>
 
 <!--mostrar un swiper o lista con los artistas del servidor y al darle clic muestre las cacnciones de ese artista -->
-
 </ion-content>
+
+<ion-footer>
+
+<ion-text color="danger" *ngIf="!song?.name">
+  <h2>Aqui aparecerá</h2>
+</ion-text>
+<ion-text color="primary" *ngIf="song?.name">
+  <h2>{{ song.name}}</h2>
+</ion-text>
+</ion-footer>
